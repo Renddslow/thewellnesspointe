@@ -1,0 +1,79 @@
+{% extends "main-layout.html" %}
+
+{% block content %}
+
+	<script type="text/javascript">
+		appointmentType =  "{{ type }}";
+	</script>
+
+	<section class="jumbotron small" style="background-image: url('{{ page['imageUrl'] }}');">
+		<div class="headline-content small">
+	    	<h1>{{ page['pageHeadline'] }}</h1>
+		</div>
+	</section>
+	<section class="page-content">
+		{% if 'content' in page and page['content'] %}
+		{{ page['content'] | markdown }}
+		{% endif %}
+	</section>
+	{% if action %}
+	<section class="page-cta">
+		<div class="cta-container">
+			{{ action['callToActionVerbiage'] | markdown }}
+			<div class="cta">
+				{% if action['buttonUrl'] == ':submit:' %}
+					<form id="sign-up">
+						<input type="hidden" value="speaking" id="form-type">
+						{% if action['hasFirstNameField'] %}
+						<input type="text" name="firstName" id="firstName" placeholder="First Name">
+						{% endif %}
+						{% if action['hasFullNameField'] %}
+						<input type="text" name="fullName" id="fullName" placeholder="Full Name">
+						{% endif %}
+						{% if action['hasEmailField'] %}
+			   		<input type="email" name="email" id="email" placeholder="Email Address">
+						{% endif %}
+						{% if action['hasPhoneField'] %}
+			   		<input type="text" name="phone" id="phone" placeholder="Phone Number">
+						{% endif %}
+			   		<button type="submit">{{ action['buttonLabel'] }}</button>
+					</form>
+					<div class="email-message"></div>
+				{% else %}
+				<a href="{{ action['buttonUrl'] }}">{{ action['buttonLabel'] }}</a>
+				{% endif %}
+			</div>
+		</div>
+	</section>
+	{% endif %}
+	{% if title == 'Schedule' %}
+	<section class="page-content page-form schedule">
+		<form action="" method="POST">
+			<label class="form-group">
+				Appointment Type
+				<select id="type" class="form-control">
+					<option value="1" selected>Adjustment</option>
+					<option value="2">Care Plan</option>
+				</select>
+			</label>
+			<label class="form-group">
+				Full Name
+				<input type="text" class="form-control" id="name" required>
+			</label>
+			<label class="form-group">
+				Email
+				<input type="email" class="form-control" id="email-address" required>
+			</label>
+			<label class="form-group">
+				Phone
+				<input type="phone" class="form-control" id="phone" required>
+			</label>
+			<label class="form-group">
+				<input type="checkbox" class="form-control" id="sign-up" checked>
+				Sign Me Up For Regular Newsletters and Updates
+			</label>
+			<button type="submit">Get Scheduled</button>
+		</form>
+	</section>
+	{% endif %}
+{% endblock %}

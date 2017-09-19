@@ -1,5 +1,98 @@
-{% extend "main-layout.html" %}
+{% extends "main-layout.html" %}
 
 {% block content %}
-
+<script type="text/javascript">
+$(function() {
+	$(".dark-separator.about").click(function() {
+		var url = "https://www.google.com/maps/place/The+Wellness+Pointe/@41.2584853,-96.1794025,15z/data=!4m2!3m1!1s0x0:0x290cc73d5966979a?sa=X&ved=0ahUKEwiAq92o49bUAhWi3YMKHejODA8Q_BIIcjAK";
+		window.open(url , '_blank');
+	});
+});
+</script>
+<section class="jumbotron" style="background-image: url('{{ page['imageUrl']  }}')">
+	<div class="headline-content">
+		<h1>{{ page['pageHeadline'] }}</h1>
+	</div>
+</section>
+<section class="dark-separator main-separator">
+</section>
+<section class="grey-content">
+	<section class="page-content">
+		{{ page['content'] | markdown }}
+		<p></p>
+	</section>
+</section>
+<section class="dark-separator about">
+	<div class="map-separator" style="background-image: url('http://i.imgur.com/ThLcJ8m.png')"></div>
+</section>
+<section class="grey-content">
+	<h2>Services</h2>
+	<div class="cards">
+		<div class="card services">
+			<div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1484910292437-025e5d13ce87?dpr=1&auto=format&fit=crop&w=1500&h=953&q=80&cs=tinysrgb&crop=&bg=');"></div>
+		  <div class="card-content">
+		    <h4>Adjustment</h4>
+		    <span>The quickest way to start your journey to life realignment is an adjustment. A simple 20 minute experience could be the start of life change.</span>
+		  </div>
+		  <div class="card-cta">
+		    <a href="/schedule?type=adjustment">Get Started</a>
+			</div>
+		</div>
+		<div class="card services">
+			<div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?dpr=1&auto=format&fit=crop&w=1500&h=1185&q=80&cs=tinysrgb&crop=&bg=');"></div>
+		  <div class="card-content">
+		    <h4>Long-Term Care Plan</h4>
+		    <span>The easiest way to begin a journey is with a solid plan. We will help you craft a plan that will rejuvenate your life.</span>
+		  </div>
+		  <div class="card-cta">
+		    <a href="/schedule?type=care+plan">Get Started</a>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="dark-separator services">
+	<div class="email-separator">
+	  <h4>Changing your life-style is hard. We'll help you make it easy.</h4>
+	  <span>Sign up for our <i>FREE</i> 4-part e-mail <em>Life-Style Change Course</em></span>
+	   <form id="sign-up">
+			 <input type="hidden" value="course" id="type">
+	     <input type="text" name="firstName" id="firstName" placeholder="First Name">
+	     <input type="email" name="email" id="email" placeholder="Email Address">
+	     <button type="submit">Get the Course</button>
+	   </form>
+	   <div class="email-message"></div>
+	</div>
+</section>
+<section class="grey-content">
+	<h2>Blog</h2>
+	<div class="cards">
+		{% for blog in blog_posts %}
+		<div class="card blog">
+			<div class="blog-card-image" style="background-image: url('{{ blog['fields']['imageUrl'] }}')"></div>
+			<div class="blog-meta">
+				<div class="author"><a>Dr. Ben Tapper</a></div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="blog-excerpt">{{ blog['fields']['title'] }}</div>
+			<div class="card-cta">
+				<a href="/blog/{{ blog['fields']['slug'] }}">Read More</a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+{% if testimonial and 'content' in testimonial %}
+<section class="dark-separator blog">
+	<div class="jumbotron-mini" style="background-image: url('https://images.unsplash.com/photo-1478562672393-2412e5b9d634?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=');">
+	  <div class="dark">
+	    <div class="referral-content-zone">
+	      <div class="referral-image" style="background-image: url('{{ testimonial['personImageUrl'] }}')"></div>
+	      <div class="referral-quote">{{ testimonial['content'] }}</div>
+	      <div class="referral-name">{{ testimonial['title'] }}</div>
+			<a href="/schedule?type=life+change" class="referral-cta">Experience Life Change</a>
+	    </div>
+	  </div>
+	</div>
+</section>
+{% endif %}
 {% endblock %}

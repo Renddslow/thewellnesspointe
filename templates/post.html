@@ -1,0 +1,18 @@
+{% extends "main-layout.html" %}
+
+{% block content %}
+<section class="jumbotron small" style="background-image: url('{{ page['imageUrl'] }}');">
+	<div class="headline-content small">
+			<h1>{{ page['title'] }}</h1>
+	</div>
+</section>
+<div class="page-meta">
+	<p>{{ page['author'] }}</p>
+</div>
+<section class="page-content">
+	{% if 'content' in page and page['content'] %}
+	{{ page['content'] | markdown }}
+	{% endif %}
+	<p>&nbsp;</p>
+</section>
+{% endblock %}
