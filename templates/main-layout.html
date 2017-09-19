@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+  <head>
+    <title>{{ title }} {% if title %}:: {% endif %}The Wellness Pointe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://use.fontawesome.com/0e9b7b8b7f.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/static/style.css">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:site" content="@wellnesspointe">
+		<meta name="twitter:title" content="{{ title }} {% if title %}:: {% endif %}The Wellness Pointe :: Omaha, NE">
+		<meta name="twitter:description" content="Here at the Wellness Pointe we guide you to achieve your life long goals of health and wellness and reclaim the life you've only dreamed up.">
+		<meta property="og:type" content="business.business">
+		<meta property="og:title" content="{{ title }} {% if title %}:: {% endif %}The Wellness Pointe :: Omaha, NE">
+		<meta property="og:url" content="https://thewellnesspointe.com">
+		<meta property="og:image" content="https://images.unsplash.com/photo-1454942901704-3c44c11b2ad1?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=&bg=">
+		<meta property="business:contact_data:street_address" content="16909 Burke St #124">
+		<meta property="business:contact_data:locality" content="Omaha">
+		<meta property="business:contact_data:region" content="Nebraska">
+		<meta property="business:contact_data:postal_code" content="68118">
+		<meta property="business:contact_data:country_name" content="United States">
+		<script type="application/ld+json">
+			{
+		  	"@context": "http://schema.org",
+		  	"@type": "LocalBusiness",
+		  	"address": {
+			    "@type": "PostalAddress",
+			    "addressLocality": "Omaha",
+			    "addressRegion": "NE",
+			    "postalCode":"68118",
+			    "streetAddress": "16909 Burke St #124"
+		  	},
+		  	"description": "Here at the Wellness Pointe we guide you to achieve your life long goals of health and wellness and reclaim the life you've only dreamed up.",
+		  	"name": "The Wellness Pointe :: Omaha, NE Chiropractic",
+		  	"telephone": "402-933-4463",
+		  	"geo": {
+			    "@type": "GeoCoordinates",
+			    "latitude": "41.25",
+			    "longitude": "-96.17"
+		 		},
+		  	"sameAs" : [
+					"https://www.facebook.com/thewellnesspointe/",
+		    	"https://twitter.com/wellnesspointe"
+				],
+				"image": "https://lh5.googleusercontent.com/p/AF1QipNmAosLe2HFmrD1lYBtc87LZmg25eRuaP8exLYe=w155-h168-p-k-no"
+			}
+		</script>
+  </head>
+	<body>
+		<div id="wrapper">
+			<header>
+				<a href="/" id="logo"></a>
+				<input type="checkbox" id="menu-toggle">
+				<label class="hamburger" for="menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</label>
+				<nav>
+					<ul>
+						<li><a href="/about">About</a></li>
+						<li><a href="/services">Services</a></li>
+						<li><a href="/speaking">Speaking</a></li>
+						<li><a href="/blog">Blog</a></li>
+						<li><a href="/schedule">Schedule</a></li>
+					</ul>
+				</nav>
+			</header>
+			<div class="content-zone">
+				{% block content %}
+				{% endblock %}
+			</div>
+			<footer>
+				<div class="hours">
+					<h3>Ours Hours</h3>
+					<table>
+						<tr>
+							<td>Mon</td>
+							<td>9:00a - 1:00p, 3:00a - 6:00p</td>
+						</tr>
+						<tr>
+							<td>Tues</td>
+							<td>3:00a - 6:00p</td>
+						</tr>
+						<tr>
+							<td>Wed</td>
+							<td>9:00a - 1:00p, 3:00a - 6:00p</td>
+						</tr>
+						<tr>
+							<td>Thurs</td>
+							<td>9:00a - 1:00p, 3:00a - 6:00p</td>
+						</tr>
+						<tr>
+							<td>Fri</td>
+							<td>Closed</td>
+						</tr>
+					</table>
+				</div>
+				<div class="contact-nav">
+					<h3>Contact Us</h3>
+					<p>16909 Burke St #124</p>
+					<p>Omaha, NE 68118</p>
+
+					<ul class="contact">
+						<li><a href="tel:+14029334463">402.933.4463</a></li>
+						<li><a href="mailto:info@thewellnesspointe.com">info@thewellnesspointe.com</a></li>
+					</ul>
+
+					<ul class="social">
+						<li><a href="https://www.facebook.com/thewellnesspointe/"><i class="fa fa-facebook-official"></i></a></li>
+						<li><a href="https://www.instagram.com/thewellnesspointe/"><i class="fa fa-instagram"></i></a></li>
+						<li><a href="https://twitter.com/wellnesspointe"><i class="fa fa-twitter"></i></a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>
