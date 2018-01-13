@@ -30,17 +30,17 @@ def home():
 		g.config['base_uri'],
 		g.config['pages']['home'],
 		g.config['api_key'])
-	page = requests.get(page_uri).json()
+	page = requests.get(page_uri, verify=False).json()
 	testimonial_uri = '{}/entries/{}?access_token={}'.format(
 		g.config['base_uri'],
 		page['fields']['testimonial']['sys']['id'],
 		g.config['api_key'])
-	testimonial = requests.get(testimonial_uri).json()
+	testimonial = requests.get(testimonial_uri, verify=False).json()
 	blog_uri = '{}/entries?access_token={}&content_type={}'.format(
 		g.config['base_uri'],
 		g.config['api_key'],
 		g.config['pages']['blog'])
-	blog_posts = requests.get(blog_uri).json()
+	blog_posts = requests.get(blog_uri, verify=False).json()
 	return render_template('home.html',
 							page=page['fields'],
 							testimonial=testimonial['fields'],
@@ -101,7 +101,7 @@ def blog_post(permalink):
 		g.config['api_key'],
 		permalink
 	)
-	blog_post = requests.get(blog_post_uri).json()
+	blog_post = requests.get(blog_post_uri, verify=False).json()
 	if blog_post['total'] > 0:
 		blog_post = blog_post['items'][0]['fields']
 		return render_template('post.html',
@@ -117,13 +117,13 @@ def pages(permalink):
 			g.config['base_uri'],
 			g.config['pages'][permalink],
 			g.config['api_key'])
-		page = requests.get(page_uri).json()
+		page = requests.get(page_uri, verify=False).json()
 		if 'testimonial' in page['fields']:
 			testimonial_uri = '{}/entries/{}?access_token={}'.format(
 				g.config['base_uri'],
 				page['fields']['testimonial']['sys']['id'],
 				g.config['api_key'])
-			testimonial = requests.get(testimonial_uri).json()['fields']
+			testimonial = requests.get(testimonial_uri, verify=False).json()['fields']
 		else:
 			testimonial = {}
 		if 'callToAction' in page['fields']:
@@ -131,7 +131,7 @@ def pages(permalink):
 				g.config['base_uri'],
 				page['fields']['callToAction']['sys']['id'],
 				g.config['api_key'])
-			action = requests.get(action_uri).json()['fields']
+			action = requests.get(action_uri, verify=False).json()['fields']
 		else:
 			action = {}
 		type_ = request.args.get('type')
